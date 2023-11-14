@@ -1,4 +1,4 @@
-package com.challenge.hotelierlistings
+package com.challenge.hotelier.listings
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

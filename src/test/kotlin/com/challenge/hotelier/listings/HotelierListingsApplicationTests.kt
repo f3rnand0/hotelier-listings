@@ -1,4 +1,4 @@
-package com.challenge.hotelierlistings
+package com.challenge.hotelier.listings
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
