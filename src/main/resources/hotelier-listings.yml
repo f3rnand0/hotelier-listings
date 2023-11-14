@@ -1,0 +1,222 @@
+openapi: 3.0.3
+info:
+  title: Hotelier Listings - OpenAPI 3.0
+  description: |-
+    API to manipulate hotelier listings
+  contact:
+    email: fgucutito@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+paths:
+  /items/{hotelierId}:
+    get:
+      summary: Get items for a given hotelier id
+      description: Get items for a given hotelier id
+      operationId: getItemsByHotelier
+      parameters:
+        - in: path
+          name: hotelierId
+          description: Hotelier id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsDto'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ItemsDto'
+        '400':
+          description: Invalid hotelier id supplied
+        '404':
+          description: The hotelier does not have items
+  /items/{id}:
+    get:
+      summary: Get an item for a given id
+      description: Get an item for a given id
+      operationId: getItemsById
+      parameters:
+        - in: path
+          name: id
+          description: Item id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemDto'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ItemDto'
+        '400':
+          description: Invalid item id supplied
+        '404':
+          description: Item not found
+    put:
+      summary: Update information of an item
+      description: Update information of an item
+      operationId: updateItem
+      parameters:
+        - in: path
+          name: id
+          description: Item id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        $ref: '#/components/requestBodies/ItemDto'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemDto'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ItemDto'
+        '400':
+          description: Invalid input
+        '404':
+          description: Item not found
+    delete:
+      summary: Delete an item
+      description: Delete an item
+      operationId: deleteItem
+      parameters:
+        - in: path
+          name: id
+          description: Item id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemDto'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ItemDto'
+        '400':
+          description: Invalid input
+        '404':
+          description: Item not found
+  /items:
+    post:
+      summary: Adds a new item
+      description: Adds a new item
+      operationId: addItem
+      requestBody:
+        $ref: '#/components/requestBodies/ItemDto'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemDto'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ItemDto'
+        '400':
+          description: Invalid input
+        '404':
+          description: Item not found
+components:
+  schemas:
+    ItemDto:
+      type: object
+      properties:
+        hotelier_id:
+          type: integer
+          format: int64
+          example: 3
+        name:
+          type: string
+          example: Example name
+        rating:
+          type: integer
+          format: int64
+          example: 5
+        category:
+          type: string
+          example: hotel
+        location:
+          $ref: '#/components/schemas/LocationDto'
+        image:
+          type: string
+          description: Path to the main image
+          example: "image-url.com"
+        reputation:
+          type: integer
+          description: Goes from 0 to 1000
+          format: int64
+          example: 100
+        reputationBadge:
+          type: string
+          example: green
+          enum:
+            - green
+            - yellow
+            - red
+        price:
+          type: integer
+          format: int64
+          example: 1000
+        availability:
+          type: integer
+          format: int64
+          example: 10
+      xml:
+        name: Item
+    LocationDto:
+      type: object
+      properties:
+        city:
+          type: string
+          example: Cuernavaca
+        state:
+          type: string
+          example: Morelos
+        country:
+          type: string
+          example: Mexico
+        zip_code:
+          type: string
+          example: 62448
+        address:
+          type: string
+          example: Boulevard Díaz Ordaz No. 9 Cantarranas
+    ItemsDto:
+      type: array
+      items:
+        $ref: '#/components/schemas/ItemDto'
+  requestBodies:
+    ItemDto:
+      description: Item object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ItemDto'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ItemDto'
