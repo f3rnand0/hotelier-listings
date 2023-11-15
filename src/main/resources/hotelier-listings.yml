@@ -10,33 +10,6 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.0
 paths:
-  /items/{hotelierId}:
-    get:
-      summary: Get items for a given hotelier id
-      description: Get items for a given hotelier id
-      operationId: getItemsByHotelier
-      parameters:
-        - in: path
-          name: hotelierId
-          description: Hotelier id
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ItemsDto'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/ItemsDto'
-        '400':
-          description: Invalid hotelier id supplied
-        '404':
-          description: The hotelier does not have items
   /items/{id}:
     get:
       summary: Get an item for a given id
@@ -120,6 +93,32 @@ paths:
         '404':
           description: Item not found
   /items:
+    get:
+      summary: Get items for a given hotelier id
+      description: Get items for a given hotelier id
+      operationId: getItemsByHotelier
+      parameters:
+        - in: query
+          name: hotelierId
+          required: true
+          description: Hotelier id
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemsDto'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ItemsDto'
+        '400':
+          description: Invalid hotelier id supplied
+        '404':
+          description: The hotelier does not have items
     post:
       summary: Adds a new item
       description: Adds a new item
@@ -155,11 +154,17 @@ components:
           example: Example name
         rating:
           type: integer
-          format: int64
           example: 5
         category:
           type: string
           example: hotel
+          enum:
+            - hotel
+            - alternative
+            - hostel
+            - lodge
+            - resort
+            - guest-house
         location:
           $ref: '#/components/schemas/LocationDto'
         image:
@@ -169,7 +174,6 @@ components:
         reputation:
           type: integer
           description: Goes from 0 to 1000
-          format: int64
           example: 100
         reputationBadge:
           type: string
@@ -184,10 +188,7 @@ components:
           example: 1000
         availability:
           type: integer
-          format: int64
           example: 10
-      xml:
-        name: Item
     LocationDto:
       type: object
       properties:
@@ -201,7 +202,7 @@ components:
           type: string
           example: Mexico
         zip_code:
-          type: string
+          type: integer
           example: 62448
         address:
           type: string
