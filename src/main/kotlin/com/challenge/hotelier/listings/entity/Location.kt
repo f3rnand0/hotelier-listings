@@ -3,8 +3,11 @@ package com.challenge.hotelier.listings.entity
 import jakarta.persistence.*
 
 @Entity
+@SequenceGenerator(name = "seq_PK", sequenceName = "LOCATION_SEQUENCE", initialValue = 1000, allocationSize = 1)
 data class Location(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long? = null,
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_PK")
+    var id: Long? = null,
     val city: String,
     val state: String,
     val country: String,

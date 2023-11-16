@@ -7,7 +7,7 @@ import com.challenge.hotelier.listings.model.LocationDto
 
 class Mappers {
 
-    fun itemtoDto(item: Item): ItemDto {
+    fun itemToDto(item: Item): ItemDto {
         return ItemDto(
             item.hotelier?.id,
             item.name,
@@ -22,7 +22,26 @@ class Mappers {
         )
     }
 
-    fun locationToDto(location: Location?): LocationDto {
+    fun itemDtoToEntity(itemDto: ItemDto): Item? {
+        if (itemDto.hotelierId == null || itemDto.name == null || itemDto.rating == null || itemDto.category == null || itemDto.location == null || itemDto.price == null || itemDto.availability == null) {
+            return null
+        } else {
+            return Item(
+                null,
+                itemDto.name,
+                itemDto.rating,
+                itemDto.category,
+                itemDto.image!!,
+                itemDto.reputation!!,
+                itemDto.reputationBadge!!,
+                itemDto.price,
+                itemDto.availability,
+                locationDtoEntity(itemDto.location),
+            )
+        }
+    }
+
+    private fun locationToDto(location: Location?): LocationDto {
         var locationDto = LocationDto()
         if (location != null) {
             locationDto = LocationDto(
@@ -36,4 +55,14 @@ class Mappers {
         return locationDto
     }
 
+    private fun locationDtoEntity(locationDto: LocationDto): Location {
+        return Location(
+            null,
+            locationDto.city!!,
+            locationDto.state!!,
+            locationDto.country!!,
+            locationDto.zipCode!!,
+            locationDto.address!!
+        )
+    }
 }
