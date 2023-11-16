@@ -82,12 +82,8 @@ paths:
         '200':
           description: Successful operation
           content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ItemDto'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/ItemDto'
+            application/json: {}
+            application/xml: {}
         '400':
           description: Invalid input
         '404':
@@ -140,6 +136,33 @@ paths:
           description: Invalid input
         '404':
           description: Item not found
+  /items/booking/{id}:
+    post:
+      summary: Books an item and reduces its availability
+      description: Books an item  and reduces its availability
+      operationId: bookItem
+      parameters:
+        - in: path
+          name: id
+          description: Item id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemDto'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ItemDto'
+        '400':
+          description: Invalid input or not available
+        '404':
+          description: Item not found
 components:
   schemas:
     ItemDto:
@@ -157,14 +180,8 @@ components:
           example: 5
         category:
           type: string
+          description: A category that describes the hotel
           example: hotel
-          enum:
-            - hotel
-            - alternative
-            - hostel
-            - lodge
-            - resort
-            - guest-house
         location:
           $ref: '#/components/schemas/LocationDto'
         image:
@@ -177,11 +194,8 @@ components:
           example: 100
         reputationBadge:
           type: string
+          description: A given badge based on reputation
           example: green
-          enum:
-            - green
-            - yellow
-            - red
         price:
           type: integer
           format: int64

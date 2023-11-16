@@ -24,6 +24,7 @@
         <validation-api>2.0.1.Final</validation-api>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <h2.version>2.2.224</h2.version>
+        <commons-lang3>3.13.0</commons-lang3>
     </properties>
 
     <dependencies>
@@ -71,6 +72,11 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3}</version>
         </dependency>
 
         <dependency>
