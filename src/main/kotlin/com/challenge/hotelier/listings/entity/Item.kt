@@ -1,13 +1,13 @@
 package com.challenge.hotelier.listings.entity
 
-import com.challenge.hotelier.listings.model.ItemDto.Category
-import com.challenge.hotelier.listings.model.ItemDto.ReputationBadge
 import jakarta.persistence.*
 
 @Entity
+@SequenceGenerator(name = "seq_PK", sequenceName = "ITEM_SEQUENCE", initialValue = 1000, allocationSize = 10)
 class Item(
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long? = null,
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_PK")
+    var id: Long? = null,
     val name: String,
     val rating: Int,
     val category: Category,
@@ -15,13 +15,11 @@ class Item(
     val reputation: Int,
     val reputationBadge: ReputationBadge,
     val price: Long,
-    val availability: Int,
+    var availability: Int,
 
     @ManyToOne(fetch = FetchType.LAZY)
     var location: Location? = null,
 
     @ManyToOne(fetch = FetchType.LAZY)
     var hotelier: Hotelier? = null
-
-
 )

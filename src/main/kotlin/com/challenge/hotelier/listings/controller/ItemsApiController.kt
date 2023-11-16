@@ -18,19 +18,20 @@ class ItemsApiController(val itemsService: ItemsService) : ItemsApi {
             return if (item == null) {
                 ResponseEntity(ItemDto(), HttpStatus.NOT_FOUND)
             } else {
-                ResponseEntity.ok(item)
+                ResponseEntity(item, HttpStatus.CREATED)
             }
         }
     }
 
-    override fun deleteItem(id: Long): ResponseEntity<ItemDto> {
-        return super.deleteItem(id)
+    override fun deleteItem(id: Long): ResponseEntity<Unit> {
+        itemsService.deleteItem(id)
+        return ResponseEntity.ok(Unit)
     }
 
     override fun getItemsByHotelier(hotelierId: Long): ResponseEntity<List<ItemDto>> {
         val items = itemsService.getItemByHotelier(hotelierId)
         return if (items.isEmpty()) {
-            ResponseEntity(emptyList<ItemDto>(), HttpStatus.NOT_FOUND)
+            ResponseEntity(emptyList(), HttpStatus.NOT_FOUND)
         } else {
             ResponseEntity.ok(items)
         }
@@ -46,6 +47,24 @@ class ItemsApiController(val itemsService: ItemsService) : ItemsApi {
     }
 
     override fun updateItem(id: Long, itemDto: ItemDto?): ResponseEntity<ItemDto> {
-        return super.updateItem(id, itemDto)
+        return if (itemDto == null) {
+            ResponseEntity(ItemDto(), HttpStatus.BAD_REQUEST)
+        } else {
+            val item = itemsService.updateItem(id, itemDto)
+            return if (item == null) {
+                ResponseEntity(ItemDto(), HttpStatus.NOT_FOUND)
+            } else {
+                ResponseEntity.ok(item)
+            }
+        }
+    }
+
+    override fun bookItem(id: Long): ResponseEntity<ItemDto> {
+        val item = itemsService.bookItem(id)
+        return if (item == null) {
+            ResponseEntity(ItemDto(), HttpStatus.NOT_FOUND)
+        } else {
+            ResponseEntity.ok(item)
+        }
     }
 }
