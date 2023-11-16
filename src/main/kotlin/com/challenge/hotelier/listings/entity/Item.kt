@@ -18,9 +18,10 @@ class Item(
     val availability: Int,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    val location: Location? = null,
+    var location: Location? = null,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    val hotelier: Hotelier? = null
+    var hotelier: Hotelier? = null
+
 
 )

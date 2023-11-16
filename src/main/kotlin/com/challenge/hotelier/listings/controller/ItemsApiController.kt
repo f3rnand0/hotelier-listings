@@ -11,7 +11,16 @@ import org.springframework.web.bind.annotation.RestController
 class ItemsApiController(val itemsService: ItemsService) : ItemsApi {
 
     override fun addItem(itemDto: ItemDto?): ResponseEntity<ItemDto> {
-        return super.addItem(itemDto)
+        return if (itemDto == null) {
+            ResponseEntity(ItemDto(), HttpStatus.BAD_REQUEST)
+        } else {
+            val item = itemsService.addItem(itemDto)
+            return if (item == null) {
+                ResponseEntity(ItemDto(), HttpStatus.NOT_FOUND)
+            } else {
+                ResponseEntity.ok(item)
+            }
+        }
     }
 
     override fun deleteItem(id: Long): ResponseEntity<ItemDto> {
@@ -20,15 +29,20 @@ class ItemsApiController(val itemsService: ItemsService) : ItemsApi {
 
     override fun getItemsByHotelier(hotelierId: Long): ResponseEntity<List<ItemDto>> {
         val items = itemsService.getItemByHotelier(hotelierId)
-        if (items.isEmpty()) {
-            return ResponseEntity(emptyList<ItemDto>(), HttpStatus.NOT_FOUND)
+        return if (items.isEmpty()) {
+            ResponseEntity(emptyList<ItemDto>(), HttpStatus.NOT_FOUND)
         } else {
-            return ResponseEntity.ok(items)
+            ResponseEntity.ok(items)
         }
     }
 
-    override fun getItemsById(id: Long): ResponseEntity<ItemDto> {
-        return super.getItemsById(id)
+    override fun getItemById(id: Long): ResponseEntity<ItemDto> {
+        val item = itemsService.getItemById(id)
+        return if (item.isEmpty) {
+            ResponseEntity(null, HttpStatus.NOT_FOUND)
+        } else {
+            ResponseEntity.ok(item.get())
+        }
     }
 
     override fun updateItem(id: Long, itemDto: ItemDto?): ResponseEntity<ItemDto> {
