@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "12ead117-456e-4676-8358-06c594b2d056",
+		"name": "Trivago Challenge",
+		"description": "HAR To Postman Generated Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1954735",
+		"_collection_link": "https://restless-star-283523.postman.co/workspace/eBay~498a2507-3c76-4f9a-ac1b-4acc528115c7/collection/1954735-12ead117-456e-4676-8358-06c594b2d056?action=share&source=collection_link&creator=1954735"
+	},
+	"item": [
+		{
+			"name": "Items by hotelier",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/items?hotelierId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"items"
+					],
+					"query": [
+						{
+							"key": "hotelierId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "successfully / 200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/items?hotelierId=1",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"items"
+							],
+							"query": [
+								{
+									"key": "hotelierId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 17 Nov 2023 16:13:58 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n {\n  \"hotelier_id\": 1,\n  \"name\": \"Marriot\",\n  \"rating\": 5,\n  \"category\": \"hotel\",\n  \"location\": {\n   \"city\": \"Quito\",\n   \"state\": \"Pichincha\",\n   \"country\": \"Ecuador\",\n   \"zip_code\": 17090,\n   \"address\": \"San Francisco y Los Guabos Lote 1\"\n  },\n  \"image\": \"/images/marriot.png\",\n  \"reputation\": 950,\n  \"reputationBadge\": \"green\",\n  \"price\": 1200,\n  \"availability\": 100\n },\n {\n  \"hotelier_id\": 1,\n  \"name\": \"A beautiful name for a hotel 1\",\n  \"rating\": 4,\n  \"category\": \"hotel\",\n  \"location\": {\n   \"city\": \"Cuernavaca\",\n   \"state\": \"Morelos\",\n   \"country\": \"Mexico\",\n   \"zip_code\": 62441,\n   \"address\": \"Boulevard Díaz Ordaz No. 9 Cantarranas\"\n  },\n  \"image\": \"/Users/fguerra/Documents/Personal/FirmaFGU.pg\",\n  \"reputation\": 1000,\n  \"reputationBadge\": \"green\",\n  \"price\": 1000,\n  \"availability\": 10\n },\n {\n  \"hotelier_id\": 1,\n  \"name\": \"A beautiful name for a hotel 1\",\n  \"rating\": 4,\n  \"category\": \"hotel\",\n  \"location\": {\n   \"city\": \"Cuernavaca\",\n   \"state\": \"Morelos\",\n   \"country\": \"Mexico\",\n   \"zip_code\": 62441,\n   \"address\": \"Boulevard Díaz Ordaz No. 9 Cantarranas\"\n  },\n  \"image\": \"/Users/fguerra/Documents/Personal/FirmaFGU.pg\",\n  \"reputation\": 1000,\n  \"reputationBadge\": \"green\",\n  \"price\": 1000,\n  \"availability\": 10\n },\n {\n  \"hotelier_id\": 1,\n  \"name\": \"A beautiful name for a hotel 1\",\n  \"rating\": 4,\n  \"category\": \"hotel\",\n  \"location\": {\n   \"city\": \"Cuernavaca\",\n   \"state\": \"Morelos\",\n   \"country\": \"Mexico\",\n   \"zip_code\": 62441,\n   \"address\": \"Boulevard Díaz Ordaz No. 9 Cantarranas\"\n  },\n  \"image\": \"/Users/fguerra/Documents/Personal/FirmaFGU.pg\",\n  \"reputation\": 1000,\n  \"reputationBadge\": \"green\",\n  \"price\": 1000,\n  \"availability\": 10\n },\n {\n  \"hotelier_id\": 1,\n  \"name\": \"A beautiful name for a hotel 1\",\n  \"rating\": 4,\n  \"category\": \"hotel\",\n  \"location\": {\n   \"city\": \"Cuernavaca\",\n   \"state\": \"Morelos\",\n   \"country\": \"Mexico\",\n   \"zip_code\": 62441,\n   \"address\": \"Boulevard Díaz Ordaz No. 9 Cantarranas\"\n  },\n  \"image\": \"/Users/fguerra/Documents/Personal/FirmaFGU.pg\",\n  \"reputation\": 1000,\n  \"reputationBadge\": \"green\",\n  \"price\": 1000,\n  \"availability\": 10\n }\n]"
+				}
+			]
+		},
+		{
+			"name": "Item by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/items/101",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"items",
+						"101"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "successfully / 200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/items/101",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"items",
+								"101"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 17 Nov 2023 16:13:51 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"hotelier_id\": 1,\n \"name\": \"A beautiful name for a hotel 1\",\n \"rating\": 4,\n \"category\": \"hotel\",\n \"location\": {\n  \"city\": \"Cuernavaca\",\n  \"state\": \"Morelos\",\n  \"country\": \"Mexico\",\n  \"zip_code\": 62441,\n  \"address\": \"Boulevard Díaz Ordaz No. 9 Cantarranas\"\n },\n \"image\": \"/Users/fguerra/Documents/Personal/FirmaFGU.pg\",\n \"reputation\": 1000,\n \"reputationBadge\": \"green\",\n \"price\": 1000,\n \"availability\": 10\n}"
+				}
+			]
+		},
+		{
+			"name": "Add Item",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"hotelier_id\": 1,\n    \"name\": \"A beautiful name for a hotel 1\",\n    \"rating\": 4,\n    \"category\": \"hotel\",\n    \"location\": {\n        \"city\": \"Cuernavaca\",\n        \"state\": \"Morelos\",\n        \"country\": \"Mexico\",\n        \"zip_code\": 62441,\n        \"address\": \"Boulevard Díaz Ordaz No. 9 Cantarranas\"\n    },\n    \"image\": \"/Users/fguerra/Documents/Personal/hotel1.png\",\n    \"reputation\": 1000,\n    \"price\": 1000,\n    \"availability\": 10\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"items"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "created / 201",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/items",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"items"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 17 Nov 2023 16:14:06 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"hotelier_id\": 1,\n \"name\": \"A beautiful name for a hotel 1\",\n \"rating\": 4,\n \"category\": \"hotel\",\n \"location\": {\n  \"city\": \"Cuernavaca\",\n  \"state\": \"Morelos\",\n  \"country\": \"Mexico\",\n  \"zip_code\": 62441,\n  \"address\": \"Boulevard Díaz Ordaz No. 9 Cantarranas\"\n },\n \"image\": \"/Users/fguerra/Documents/Personal/FirmaFGU.pg\",\n \"reputation\": 1000,\n \"reputationBadge\": \"green\",\n \"price\": 1000,\n \"availability\": 10\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Item",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"hotelier_id\": 3,\n\t\"name\": \"A horrendous name for a hotel 1\",\n\t\"rating\": 3,\n\t\"category\": \"hotel\",\n\t\"location\": {\n\t\t\"city\": \"Cuernavaca\",\n\t\t\"state\": \"Morelos\",\n\t\t\"country\": \"Mexico\",\n\t\t\"zip_code\": 62441,\n\t\t\"address\": \"Boulevard Díaz Ordaz No. 9 Cantarranas\"\n\t},\n\t\"image\": \"/Users/fguerra/Documents/Personal/hotel1.png\",\n\t\"reputation\": 100,\n\t\"price\": 1000,\n\t\"availability\": 10\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/items/100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"items",
+						"100"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "successfully / 200",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/items/100",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"items",
+								"100"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 17 Nov 2023 16:14:31 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"hotelier_id\": 3,\n \"name\": \"A beautiful name for a hotel 1\",\n \"rating\": 3,\n \"category\": \"hotel\",\n \"location\": {\n  \"city\": \"Cuernavaca\",\n  \"state\": \"Morelos\",\n  \"country\": \"Mexico\",\n  \"zip_code\": 62441,\n  \"address\": \"Boulevard Díaz Ordaz No. 9 Cantarranas\"\n },\n \"image\": \"/Users/fguerra/Documents/Personal/FirmaFGU.pg\",\n \"reputation\": 100,\n \"reputationBadge\": \"red\",\n \"price\": 1000,\n \"availability\": 10\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Item",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/items/102",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"items",
+						"102"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "not found / 404",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL1}}/items/102",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"items",
+								"102"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 17 Nov 2023 16:14:03 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"status\": 404,\n \"message\": \"Item not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Book item",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/plain"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/items/booking/100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"items",
+						"booking",
+						"100"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "successfully / 200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/plain"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL1}}/items/booking/100",
+							"host": [
+								"{{baseURL1}}"
+							],
+							"path": [
+								"items",
+								"booking",
+								"100"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 17 Nov 2023 16:16:59 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"hotelier_id\": 3,\n \"name\": \"A beautiful name for a hotel 1\",\n \"rating\": 3,\n \"category\": \"hotel\",\n \"location\": {\n  \"city\": \"Cuernavaca\",\n  \"state\": \"Morelos\",\n  \"country\": \"Mexico\",\n  \"zip_code\": 62441,\n  \"address\": \"Boulevard Díaz Ordaz No. 9 Cantarranas\"\n },\n \"image\": \"/Users/fguerra/Documents/Personal/FirmaFGU.pg\",\n \"reputation\": 100,\n \"reputationBadge\": \"red\",\n \"price\": 1000,\n \"availability\": 7\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL1",
+			"value": "http://localhost:8080",
+			"type": "any"
+		}
+	]
+}
