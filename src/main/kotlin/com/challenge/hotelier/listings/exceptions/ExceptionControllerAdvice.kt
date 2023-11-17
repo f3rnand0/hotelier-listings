@@ -1,12 +1,10 @@
 package com.challenge.hotelier.listings.exceptions
 
-import jakarta.servlet.UnavailableException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import java.nio.file.InvalidPathException
-import java.sql.SQLIntegrityConstraintViolationException
 
 @ControllerAdvice
 class ExceptionControllerAdvice {
@@ -30,7 +28,7 @@ class ExceptionControllerAdvice {
     }
 
     @ExceptionHandler
-    fun handleSQLIntegrityConstraintViolationException(ex: SQLIntegrityConstraintViolationException): ResponseEntity<ErrorMessageModel> {
+    fun handleIntegrityConstraintViolationException(ex: IntegrityConstraintViolationException): ResponseEntity<ErrorMessageModel> {
         val errorMessage = ErrorMessageModel(
             HttpStatus.OK.value(),
             ex.message
@@ -39,7 +37,16 @@ class ExceptionControllerAdvice {
     }
 
     @ExceptionHandler
-    fun handleUnavailableException(ex: UnavailableException): ResponseEntity<ErrorMessageModel> {
+    fun handleNotFoundException(ex: NotFoundException): ResponseEntity<ErrorMessageModel> {
+        val errorMessage = ErrorMessageModel(
+            HttpStatus.NOT_FOUND.value(),
+            ex.message
+        )
+        return ResponseEntity(errorMessage, HttpStatus.NOT_FOUND)
+    }
+
+    @ExceptionHandler
+    fun handleNotAvailableException(ex: NotAvailableException): ResponseEntity<ErrorMessageModel> {
         val errorMessage = ErrorMessageModel(
             HttpStatus.BAD_REQUEST.value(),
             ex.message

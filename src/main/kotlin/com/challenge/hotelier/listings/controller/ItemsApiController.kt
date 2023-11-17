@@ -30,8 +30,8 @@ class ItemsApiController(val itemsService: ItemsService) : ItemsApi {
 
     override fun getItemsByHotelier(hotelierId: Long): ResponseEntity<List<ItemDto>> {
         val items = itemsService.getItemByHotelier(hotelierId)
-        return if (items.isEmpty()) {
-            ResponseEntity(emptyList(), HttpStatus.NOT_FOUND)
+        return if (items.isNullOrEmpty()) {
+            ResponseEntity(emptyList(), HttpStatus.NO_CONTENT)
         } else {
             ResponseEntity.ok(items)
         }
@@ -40,7 +40,7 @@ class ItemsApiController(val itemsService: ItemsService) : ItemsApi {
     override fun getItemById(id: Long): ResponseEntity<ItemDto> {
         val item = itemsService.getItemById(id)
         return if (item.isEmpty) {
-            ResponseEntity(null, HttpStatus.NOT_FOUND)
+            ResponseEntity(ItemDto(), HttpStatus.NO_CONTENT)
         } else {
             ResponseEntity.ok(item.get())
         }
@@ -60,11 +60,6 @@ class ItemsApiController(val itemsService: ItemsService) : ItemsApi {
     }
 
     override fun bookItem(id: Long): ResponseEntity<ItemDto> {
-        val item = itemsService.bookItem(id)
-        return if (item == null) {
-            ResponseEntity(ItemDto(), HttpStatus.NOT_FOUND)
-        } else {
-            ResponseEntity.ok(item)
-        }
+        return ResponseEntity.ok(itemsService.bookItem(id))
     }
 }
