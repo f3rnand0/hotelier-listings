@@ -53,8 +53,10 @@ docker run -p 8080:8080 hotelier-listings
 ### Testing
 
 - In the root folder of the project there's a postman collection (v2.1) with requests for every 
-available endpoint
-- Also, the H2 web console has been enabled to check the data being updated at the moment. It can be 
+available endpoint. The file is `Trivago Challenge.postman_collection.json`
+
+#### H2 Console
+- The H2 web console has been enabled to check the data being updated at the moment. It can be 
 accessed using the following information:
 
 ```
