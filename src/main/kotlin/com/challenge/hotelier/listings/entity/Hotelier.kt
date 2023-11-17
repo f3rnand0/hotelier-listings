@@ -3,7 +3,7 @@ package com.challenge.hotelier.listings.entity
 import jakarta.persistence.*
 
 @Entity
-@SequenceGenerator(name = "seq_PK", sequenceName = "HOTELIER_SEQUENCE", initialValue = 1000, allocationSize = 10)
+@SequenceGenerator(name = "seq_PK", sequenceName = "HOTELIER_SEQUENCE", initialValue = 1000)
 data class Hotelier(
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_PK")
